@@ -37,6 +37,7 @@
     <script>
     var app = angular.module("mapApp", []);
     app.controller("mapCtrl", function($scope, $timeout) {
+        $(document).ready(function() {
         $scope.GetAddress = GetAddress;
         var options = {
             enableHighAccuracy: true,
@@ -45,7 +46,7 @@
 
         function GetAddress(txtLatitude, txtLongitude, type) {
             console.log("type---", type)
-            $timeout(function() {
+            //$timeout(function() {
                 var lat = parseFloat(txtLatitude);
                 var lng = parseFloat(txtLongitude);
                 console.log("addr lat long ---", lat, lng)
@@ -60,7 +61,7 @@
                         }
                     }
                 });
-            }, 500)
+           // }, 500)
 
             $scope.$apply();
         }
@@ -81,9 +82,9 @@
             console.warn('ERROR', err.message);
         }
 
-        $(document).ready(function() {
+       
             navigator.geolocation.getCurrentPosition(success, error, options);
-        });
+      
 
         function success1(pos) {
             var crd = pos.coords;
@@ -100,7 +101,7 @@
         }
 
         navigator.geolocation.watchPosition(success1, error1, options)
-
+  });
 
     })
     </script>
