@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="mapApp">
+
 <head>
-	<meta charset="UTF-8">
-	<title>  uhdPankaj</title>
+    <meta charset="UTF-8">
+    <title>Live Location</title>
+    <script src="https://saggst.com/assets/libs/angular/1.4.8/angular.min.js"></script>
+    <script src="https://saggst.com/assets/ui/js/lib/jquery/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD699VYdJTygRIuGfKDwaWXTYnVjm0EtaU" async defer></script>
 </head>
-<body>
-	its working
+
+<body ng-controller="mapCtrl">
+    Latitude : {{txtLatitude}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Longitude : {{txtLongitude}}</br></br>
+    Updated Latitude : {{txtLatitude1}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Updated Longitude : {{txtLongitude1}}
+   <!--  <input type="button" value="Get Address" ng-click="GetAddress()" /> </br> -->
+    </br>
+    </br>
+    <div class="full_addr">
+        Full Address : {{fullAddressObj.formatted_address}}
+    </div>
+    </br></br>
+    <div class="breaked_addr">
+        Street Number : {{fullAddressObj.address_components[0].long_name}} </br> </br>
+        Route : {{fullAddressObj.address_components[1].long_name}} </br> </br>
+        Nearest Place : {{fullAddressObj.address_components[2].long_name}} </br> </br>
+        Sublocality II : {{fullAddressObj.address_components[3].long_name}} </br> </br>
+        Sublocality I : {{fullAddressObj.address_components[4].long_name}} </br> </br>
+        Locality : {{fullAddressObj.address_components[5].long_name}} </br> </br>
+        District (Administrative Area Level II) : {{fullAddressObj.address_components[6].long_name}} </br> </br>
+        State (Administrative Area Level I) : {{fullAddressObj.address_components[7].long_name}} </br> </br>
+        Country : {{fullAddressObj.address_components[8].long_name}} </br> </br>
+        Pin Code / Zip Code : {{fullAddressObj.address_components[9].long_name}} </br> </br>
+    </div>
+    </br></br>
+    <script>
+    var app = angular.module("mapApp", []);
+    app.controller("mapCtrl", function($scope, $timeout) {
+        $scope.GetAddress = GetAddress;
+        var options = {
+            enableHighAccuracy: true,
+            maximumAge: 0
+        };
+
+        function GetAddress(txtLatitude, txtLongitude, type) {
+        	console.log("type---", type)
+            var lat = parseFloat(txtLatitude);
+            var lng = parseFloat(txtLongitude);
+            console.log("addr lat long ---", lat, lng)
+            var latlng = new google.maps.LatLng(lat, lng);
+            var geocoder = geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log("results : ", results)
+                    if (results[0]) {
+                        $scope.fullAddressObj = results[0];
+                        $scope.$apply();
+                        console.log("address : ", results[1].formatted_address)
+                    }
+                }
+            });
+        }
+
+
+
+        function success(pos) {
+            var crd = pos.coords;
+            $scope.txtLatitude = crd.latitude;
+            $scope.txtLongitude = crd.longitude;
+            console.log('Latitude : ', crd.latitude);
+            console.log('Longitude: ', crd.longitude);
+            GetAddress($scope.txtLatitude, $scope.txtLongitude, 'on load');
+            $scope.$apply();
+        }
+
+        function error(err) {
+            console.warn('ERROR', err.message);
+        }
+
+        $(document).ready(function() {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        });
+
+        function success1(pos) {
+            var crd = pos.coords;
+            $scope.txtLatitude1 = crd.latitude;
+            $scope.txtLongitude1 = crd.longitude;
+            console.log('watch Latitude : ', crd.latitude);
+            console.log('watch Longitude: ', crd.longitude);
+            GetAddress($scope.txtLatitude1, $scope.txtLongitude1, 'on watch');
+            $scope.$apply();
+        }
+
+        function error1(err) {
+            console.warn('ERROR', err.message);
+        }
+
+        navigator.geolocation.watchPosition(success1, error1, options)
+
+
+    })
+    </script>
 </body>
+
 </html>
