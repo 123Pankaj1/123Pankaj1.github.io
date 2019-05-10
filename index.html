@@ -46,7 +46,7 @@
 
         function GetAddress(txtLatitude, txtLongitude, type) {
             console.log("type---", type)
-            //$timeout(function() {
+            $timeout(function() {
                 var lat = parseFloat(txtLatitude);
                 var lng = parseFloat(txtLongitude);
                 console.log("addr lat long ---", lat, lng)
@@ -61,7 +61,7 @@
                         }
                     }
                 });
-           // }, 500)
+            }, 500)
 
             $scope.$apply();
         }
