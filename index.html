@@ -55,11 +55,11 @@
                     console.log("results : ", results)
                     if (results[0]) {
                         $scope.fullAddressObj = results[0];
-                        $scope.$apply();
                         console.log("address : ", results[1].formatted_address)
                     }
                 }
             });
+            $scope.$apply();
         }
 
 
