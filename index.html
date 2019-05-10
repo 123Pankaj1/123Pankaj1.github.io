@@ -66,8 +66,8 @@
 
         function success(pos) {
             var crd = pos.coords;
-            $scope.txtLatitude = crd.latitude;
-            $scope.txtLongitude = crd.longitude;
+            $scope.txtLatitude = parseFloat(crd.latitude);
+            $scope.txtLongitude = parseFloat(crd.longitude);
             console.log('Latitude : ', crd.latitude);
             console.log('Longitude: ', crd.longitude);
             GetAddress($scope.txtLatitude, $scope.txtLongitude, 'on load');
@@ -84,8 +84,8 @@
 
         function success1(pos) {
             var crd = pos.coords;
-            $scope.txtLatitude1 = crd.latitude;
-            $scope.txtLongitude1 = crd.longitude;
+            $scope.txtLatitude1 = parseFloat(crd.latitude);
+            $scope.txtLongitude1 = parseFloat(crd.longitude);
             console.log('watch Latitude : ', crd.latitude);
             console.log('watch Longitude: ', crd.longitude);
             GetAddress($scope.txtLatitude1, $scope.txtLongitude1, 'on watch');
