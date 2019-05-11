@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Live Location</title>
     <script src="angular.min.js"></script>
-    <!-- mtest key --  AIzaSyDDfJZxnZAYgKiGBjc0jiYecdF6uZ4L65w 
-    	self mail -- AIzaSyD699VYdJTygRIuGfKDwaWXTYnVjm0EtaU-->     
+    <!-- mtest key   AIzaSyDDfJZxnZAYgKiGBjc0jiYecdF6uZ4L65w 
+    	self mail AIzaSyD699VYdJTygRIuGfKDwaWXTYnVjm0EtaU-->     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDfJZxnZAYgKiGBjc0jiYecdF6uZ4L65w" async defer></script>
     <script src="jquery.min.js"></script>
 </head>
@@ -25,18 +25,18 @@
         Full Address 1 : {{fullAddressObj1.formatted_address}}
     </div>
     </br></br>
-     <div class="breaked_addr">
-        Street Number : {{fullAddressObj.address_components[0].long_name}} </br> </br>
-        Route : {{fullAddressObj.address_components[1].long_name}} </br> </br>
-        Nearest Place : {{fullAddressObj.address_components[2].long_name}} </br> </br>
-        Sublocality II : {{fullAddressObj.address_components[3].long_name}} </br> </br>
-        Sublocality I : {{fullAddressObj.address_components[4].long_name}} </br> </br>
-        Locality : {{fullAddressObj.address_components[5].long_name}} </br> </br>
-        District (Administrative Area Level II) : {{fullAddressObj.address_components[6].long_name}} </br> </br>
-        State (Administrative Area Level I) : {{fullAddressObj.address_components[7].long_name}} </br> </br>
-        Country : {{fullAddressObj.address_components[8].long_name}} </br> </br>
-        Pin Code / Zip Code : {{fullAddressObj.address_components[9].long_name}} </br> </br>
-    </div>
+    <!--  <div class="breaked_addr">
+       Street Number : {{fullAddressObj.address_components[0].long_name}} </br> </br>
+       Route : {{fullAddressObj.address_components[1].long_name}} </br> </br>
+       Nearest Place : {{fullAddressObj.address_components[2].long_name}} </br> </br>
+       Sublocality II : {{fullAddressObj.address_components[3].long_name}} </br> </br>
+       Sublocality I : {{fullAddressObj.address_components[4].long_name}} </br> </br>
+       Locality : {{fullAddressObj.address_components[5].long_name}} </br> </br>
+       District (Administrative Area Level II) : {{fullAddressObj.address_components[6].long_name}} </br> </br>
+       State (Administrative Area Level I) : {{fullAddressObj.address_components[7].long_name}} </br> </br>
+       Country : {{fullAddressObj.address_components[8].long_name}} </br> </br>
+       Pin Code / Zip Code : {{fullAddressObj.address_components[9].long_name}} </br> </br>
+        </div> -->
     </br></br>
     <script>
     var app = angular.module("mapApp", []);
