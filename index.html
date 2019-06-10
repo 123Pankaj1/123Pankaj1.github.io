@@ -112,6 +112,39 @@ app secret   b2c61ddde72cc786fec9cd51050e1e6c
 
         navigator.geolocation.watchPosition(success1, error1, options)
   });
+        
+       /* $scope.date = new Date();
+	$scope.compareDate = new Date("2017-05-01");
+	
+	$scope.calculate = function(firstDate, secondDate){
+		$scope.diff = firstDate.getTime() - secondDate.getTime();
+		$scope.years = $scope.diff/(1000*60*60*24*365);
+		$scope.years1 = Math.trunc($scope.diff/(1000*60*60*24*365));
+		
+		$scope.month = ($scope.years-$scope.years1)*12;
+		$scope.month1 = Math.trunc(($scope.years-$scope.years1)*12);
+		
+		$scope.days = (($scope.month-$scope.month1)/(12))*365;
+		$scope.days1 = Math.trunc((($scope.month-$scope.month1)/(12))*365);
+		
+		$scope.hours = ($scope.days - $scope.days1)*24;
+		$scope.hours1 = Math.trunc(($scope.days - $scope.days1)*24);
+		
+		$scope.minutes = ($scope.hours - $scope.hours1)*60;
+		$scope.minutes1 = Math.trunc(($scope.hours - $scope.hours1)*60);
+		
+		$scope.seconds = ($scope.minutes - $scope.minutes1)*60;
+		$scope.seconds1 = Math.trunc(($scope.minutes - $scope.minutes1)*60);
+		
+		console.log("year", $scope.years1);
+		console.log("MOnth", $scope.month1);
+		console.log("day", $scope.days1);
+		console.log("HH", $scope.hours1);
+		console.log("MM", $scope.minutes1);
+		console.log("SS", $scope.seconds1);
+	}
+	
+	 $scope.timeC = $interval(function(){$scope.calculate(new Date(), $scope.compareDate)}, 1000);*/
 
     })
     </script>
